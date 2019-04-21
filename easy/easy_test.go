@@ -42,3 +42,15 @@ func TestIsPalindrome(t *testing.T) {
 		}
 	}
 }
+
+func TestLongestCommonPrefix(t *testing.T) {
+	cases := [][]string{{"flower", "flow", "flight"}, {"dog", "racecar", "car"}}
+	except := []string{"fl", ""}
+
+	for index, v := range cases {
+		if except[index] != LongestCommonPrefix(v) {
+			t.Errorf("index:%d, want:%s, but got:%s", index, except[index], LongestCommonPrefix(v))
+			return
+		}
+	}
+}

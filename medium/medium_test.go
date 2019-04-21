@@ -96,3 +96,15 @@ func TestMyAtoi(t *testing.T) {
 		}
 	}
 }
+
+func TestMaxArea(t *testing.T) {
+	cases := [][]int{{1, 8, 6, 2, 5, 4, 8, 3, 7}}
+	except := []int{49}
+
+	for index, testCase := range cases {
+		if except[index] != MaxArea(testCase) {
+			t.Errorf("index:%d, want:%d, but got:%d", except[index], MaxArea(testCase))
+			return
+		}
+	}
+}
