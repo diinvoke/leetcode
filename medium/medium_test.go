@@ -1,6 +1,10 @@
 package medium
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/diinvoke/leetcode/tools"
+)
 
 func TestEqualListNode(t *testing.T) {
 	l1 := genListNode([]int{1, 3, 4})
@@ -105,6 +109,17 @@ func TestMaxArea(t *testing.T) {
 		if except[index] != MaxArea(testCase) {
 			t.Errorf("index:%d, want:%d, but got:%d", except[index], MaxArea(testCase))
 			return
+		}
+	}
+}
+
+func TestThreeSum(t *testing.T) {
+	cases := [][]int{{-1, 0, 1, 2, -1, -4}}
+	except := [][][]int{{{-1, 0, 1}, {-1, -1, 2}}}
+
+	for index, nums := range cases {
+		if !tools.EqualDoubleSlice(except[index], ThreeSum(nums), true) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], ThreeSum(nums))
 		}
 	}
 }
