@@ -123,3 +123,23 @@ func TestThreeSum(t *testing.T) {
 		}
 	}
 }
+
+func TestThreeSumClosest(t *testing.T) {
+	type data struct {
+		nums   []int
+		target int
+	}
+	cases := []data{
+		{[]int{-1, 2, 1, -4}, 1},
+		{[]int{1, 1, 1, 0}, 100},
+		{[]int{0, 2, 1, -3}, 1},
+	}
+	except := []int{2, 3, 0}
+
+	for index, testCase := range cases {
+		if except[index] != ThreeSumClosest(testCase.nums, testCase.target) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], ThreeSumClosest(testCase.nums, testCase.target))
+			return
+		}
+	}
+}
