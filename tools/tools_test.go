@@ -15,3 +15,22 @@ func TestQuickSort(t *testing.T) {
 		}
 	}
 }
+
+func TestEqualStrSlice(t *testing.T) {
+	type testData struct {
+		s1      []string
+		s2      []string
+		orderly bool
+	}
+	cases := []testData{
+		{[]string{"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"}, []string{"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"}, true},
+		{[]string{"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"}, []string{"cf", "ad", "ae", "af", "bd", "be", "bf", "cd", "ce"}, false},
+	}
+
+	for index, data := range cases {
+		if !EqualStrSlice(data.s1, data.s2, data.orderly) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, data.s2, data.s1)
+			return
+		}
+	}
+}

@@ -35,3 +35,22 @@ func EqualDoubleSlice(s1, s2 [][]int, needSort bool) bool {
 
 	return EqualIntSlice(ss1, ss2)
 }
+
+func EqualStrSlice(s1, s2 []string, orderly bool) bool {
+	if len(s1) != len(s2) {
+		return false
+	}
+
+	if !orderly {
+		sort.Strings(s1)
+		sort.Strings(s2)
+	}
+
+	for index, val := range s1 {
+		if s2[index] != val {
+			return false
+		}
+	}
+
+	return true
+}

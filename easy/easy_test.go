@@ -54,3 +54,15 @@ func TestLongestCommonPrefix(t *testing.T) {
 		}
 	}
 }
+
+func TestIsValid(t *testing.T) {
+	cases := []string{"()", "()[]{}", "(]", "([)]", "{[]}", "", "{]", "){", "(("}
+	except := []bool{true, true, false, false, true, true, false, false, false}
+
+	for index, v := range cases {
+		if except[index] != IsValid(v) {
+			t.Errorf("index:%d, want:%t, but got:%t", index, except[index], IsValid(v))
+			return
+		}
+	}
+}

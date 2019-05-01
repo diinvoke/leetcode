@@ -143,3 +143,17 @@ func TestThreeSumClosest(t *testing.T) {
 		}
 	}
 }
+
+func TestLetterCombinations(t *testing.T) {
+	digits := []string{"23"}
+	except := [][]string{{"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"}}
+
+	for index, digit := range digits {
+		if !tools.EqualStrSlice(LetterCombinations(digit), except[index], false) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], LetterCombinations(digit))
+			return
+		}
+
+		t.Logf("%+v", LetterCombinations(digit))
+	}
+}
