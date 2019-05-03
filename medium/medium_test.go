@@ -120,6 +120,7 @@ func TestThreeSum(t *testing.T) {
 	for index, nums := range cases {
 		if !tools.EqualDoubleSlice(except[index], ThreeSum(nums), true) {
 			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], ThreeSum(nums))
+			return
 		}
 	}
 }
@@ -155,5 +156,27 @@ func TestLetterCombinations(t *testing.T) {
 		}
 
 		t.Logf("%+v", LetterCombinations(digit))
+	}
+}
+
+func TestFourSum(t *testing.T) {
+	type testData struct {
+		nums   []int
+		target int
+	}
+	cases := []*testData{
+		{[]int{1, 0, -1, 0, -2, 2}, 0},
+		{[]int{4, -9, -2, -2, -7, 9, 9, 5, 10, -10, 4, 5, 2, -4, -2, 4, -9, 5}, -13},
+	}
+	except := [][][]int{
+		{{-1, 0, 0, 1}, {-2, -1, 1, 2}, {-2, 0, 0, 2}},
+		{{-10, -9, -4, 10}, {-10, -9, 2, 4}, {-9, -9, -4, 9}, {-9, -7, -2, 5}, {-9, -4, -2, 2}, {-7, -2, -2, -2}},
+	}
+
+	for index, data := range cases {
+		if !tools.EqualDoubleSlice(except[index], FourSum(data.nums, data.target), true) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], FourSum(data.nums, data.target))
+			return
+		}
 	}
 }
