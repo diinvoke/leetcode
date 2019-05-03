@@ -180,3 +180,29 @@ func TestFourSum(t *testing.T) {
 		}
 	}
 }
+
+func TestRemoveNthFromEnd(t *testing.T) {
+	type testData struct {
+		list *ListNode
+		n    int
+	}
+
+	cases := []*testData{
+		{genListNode([]int{1, 2, 3, 4, 5}), 2},
+		{genListNode([]int{1, 2, 3, 4, 5}), 5},
+		{genListNode([]int{1}), 1},
+	}
+	except := []*ListNode{
+		genListNode([]int{1, 2, 3, 5}),
+		genListNode([]int{2, 3, 4, 5}),
+		genListNode([]int{}),
+	}
+
+	for index, data := range cases {
+		result := RemoveNthFromEnd(data.list, data.n)
+		if !equalListNode(except[index], result) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, stringListNode(except[index]), stringListNode(result))
+			return
+		}
+	}
+}

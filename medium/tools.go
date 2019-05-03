@@ -27,10 +27,6 @@ func stringListNode(l *ListNode) string {
 }
 
 func equalListNode(l1, l2 *ListNode) bool {
-	if l1 == nil || l2 == nil {
-		return false
-	}
-
 	for l1 != nil && l2 != nil {
 		if l1.Val != l2.Val {
 			return false
