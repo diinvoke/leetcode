@@ -66,3 +66,26 @@ func TestIsValid(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeTwoLists(t *testing.T) {
+	type testData struct {
+		l1 *ListNode
+		l2 *ListNode
+	}
+
+	cases := []*testData{
+		{genListNode([]int{1, 2, 4}), genListNode([]int{1, 3, 4})},
+	}
+
+	except := []*ListNode{
+		genListNode([]int{1, 1, 2, 3, 4, 4}),
+	}
+
+	for index, testData := range cases {
+		result := MergeTwoLists(testData.l1, testData.l2)
+		if !equalListNode(except[index], result) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, stringListNode(except[index]), stringListNode(result))
+			return
+		}
+	}
+}

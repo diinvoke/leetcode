@@ -1,6 +1,8 @@
 package tools
 
-import "sort"
+import (
+	"sort"
+)
 
 func EqualIntSlice(s1, s2 []int) bool {
 	if len(s1) != len(s2) {
