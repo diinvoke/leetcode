@@ -89,3 +89,32 @@ func TestMergeTwoLists(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeArray(t *testing.T) {
+	type testData struct {
+		nums1 []int
+		m     int
+		nums2 []int
+		n     int
+	}
+
+	cases := []*testData{
+		{[]int{1, 2, 3, 0, 0, 0}, 3, []int{2, 5, 6}, 3},
+		{[]int{2, 5, 6, 0, 0, 0}, 3, []int{2, 5, 6}, 3},
+		{[]int{0, 0, 0}, 0, []int{2, 5, 6}, 3},
+	}
+
+	except := [][]int{
+		{1, 2, 2, 3, 5, 6},
+		{2, 2, 5, 5, 6, 6},
+		{2, 5, 6},
+	}
+
+	for index, testData := range cases {
+		MergeArray(testData.nums1, testData.m, testData.nums2, testData.n)
+		if !tools.EqualIntSlice(except[index], testData.nums1) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], testData.nums1)
+			return
+		}
+	}
+}
