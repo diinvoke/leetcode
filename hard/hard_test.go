@@ -32,3 +32,25 @@ func TestFindMedianSortedArrays(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeKLists(t *testing.T) {
+	cases := [][]*ListNode{
+		{
+			genListNode([]int{1, 4, 5}),
+			genListNode([]int{1, 3, 4}),
+			genListNode([]int{2, 6}),
+		},
+	}
+
+	except := []*ListNode{
+		genListNode([]int{1, 1, 2, 3, 4, 4, 5, 6}),
+	}
+
+	for index, testData := range cases {
+		result := MergeKLists(testData)
+		if !equalListNode(except[index], result) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, stringListNode(except[index]), stringListNode(result))
+			return
+		}
+	}
+}
