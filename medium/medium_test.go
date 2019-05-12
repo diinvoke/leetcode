@@ -206,3 +206,27 @@ func TestRemoveNthFromEnd(t *testing.T) {
 		}
 	}
 }
+
+func TestSwapPairs(t *testing.T) {
+	cases := []*ListNode{
+		genListNode([]int{1, 2, 3, 4}),
+		genListNode([]int{1, 2}),
+		genListNode([]int{1}),
+		genListNode([]int{}),
+	}
+
+	except := []*ListNode{
+		genListNode([]int{2, 1, 4, 3}),
+		genListNode([]int{2, 1}),
+		genListNode([]int{1}),
+		genListNode([]int{}),
+	}
+
+	for index, head := range cases {
+		result := SwapPairs(head)
+		if !equalListNode(except[index], result) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, stringListNode(except[index]), stringListNode(result))
+			return
+		}
+	}
+}
