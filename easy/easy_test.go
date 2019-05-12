@@ -118,3 +118,55 @@ func TestMergeArray(t *testing.T) {
 		}
 	}
 }
+
+func TestRemoveDuplicates(t *testing.T) {
+	cases := [][]int{
+		{1, 1, 1, 2, 2},
+		{1, 1, 1, 2},
+		{0, 0, 1, 1, 1, 2, 2, 3, 3, 4},
+	}
+
+	except := []int{2, 2, 5}
+
+	for index, nums := range cases {
+		result := RemoveDuplicates(nums)
+		if result != except[index] {
+			t.Errorf("index:%d, want:%d, but got:%d", index, except[index], result)
+			return
+		}
+	}
+}
+
+func BenchmarkRemoveDuplicates(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		removeDuplicates([]int{1, 1, 1, 2, 2})
+	}
+}
+
+func BenchmarkRemoveDuplicates2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		removeDuplicates1([]int{1, 1, 1, 2, 2})
+	}
+}
+
+func TestRemoveElement(t *testing.T) {
+	type testData struct {
+		nums []int
+		val  int
+	}
+
+	cases := []*testData{
+		{[]int{3, 2, 2, 3}, 3},
+		{[]int{0, 1, 2, 2, 3, 0, 4, 2}, 2},
+	}
+
+	except := []int{2, 5}
+
+	for index, data := range cases {
+		result := removeElement(data.nums, data.val)
+		if result != except[index] {
+			t.Errorf("index:%d, want:%d, but got:%d", index, except[index], result)
+			return
+		}
+	}
+}
