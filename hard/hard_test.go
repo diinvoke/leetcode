@@ -54,3 +54,62 @@ func TestMergeKLists(t *testing.T) {
 		}
 	}
 }
+
+func TestReverseList(t *testing.T) {
+	cases := []*ListNode{
+		genListNode([]int{1, 2, 3, 4}),
+		genListNode([]int{4, 3, 1, 2}),
+		genListNode([]int{4, 5}),
+		genListNode([]int{3, 6, 1, 7, 2}),
+		genListNode([]int{1}),
+		genListNode([]int{}),
+	}
+
+	except := []*ListNode{
+		genListNode([]int{4, 3, 2, 1}),
+		genListNode([]int{2, 1, 3, 4}),
+		genListNode([]int{5, 4}),
+		genListNode([]int{2, 7, 1, 6, 3}),
+		genListNode([]int{1}),
+		genListNode([]int{}),
+	}
+
+	for index, data := range cases {
+		result := reverseList(data)
+		if !equalListNode(except[index], result) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, stringListNode(except[index]), stringListNode(result))
+			return
+		}
+	}
+}
+
+func TestReverseKGroup(t *testing.T) {
+	type testData struct {
+		head *ListNode
+		k    int
+	}
+
+	cases := []testData{
+		{genListNode([]int{1, 2, 3, 4, 5}), 2},
+		{genListNode([]int{1, 2, 3, 4, 5}), 3},
+		{genListNode([]int{1, 2, 3, 4, 5}), 1},
+		{genListNode([]int{1, 2, 3, 4, 5}), 0},
+		{genListNode([]int{1, 2, 3, 4, 5}), 4},
+	}
+
+	except := []*ListNode{
+		genListNode([]int{2, 1, 4, 3, 5}),
+		genListNode([]int{3, 2, 1, 4, 5}),
+		genListNode([]int{1, 2, 3, 4, 5}),
+		genListNode([]int{1, 2, 3, 4, 5}),
+		genListNode([]int{4, 3, 2, 1, 5}),
+	}
+
+	for index, data := range cases {
+		result := reverseKGroup(data.head, data.k)
+		if !equalListNode(except[index], result) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, stringListNode(except[index]), stringListNode(result))
+			return
+		}
+	}
+}
