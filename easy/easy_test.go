@@ -170,3 +170,47 @@ func TestRemoveElement(t *testing.T) {
 		}
 	}
 }
+
+func TestStrStr(t *testing.T) {
+	type testData struct {
+		haystack string
+		needle   string
+	}
+
+	cases := []testData{
+		{"hello", "ll"},
+		{"aaaaa", "bba"},
+		{"aaaaa", "a"},
+		{"hello", ""},
+		{"hello", "hello"},
+		{"hello", "hello0"},
+		{"mississippi", "issipi"},
+	}
+
+	except := []int{2, -1, 0, 0, 0, -1, -1}
+
+	for index, data := range cases {
+		result := strStr(data.haystack, data.needle)
+		if except[index] != result {
+			t.Errorf("index:%d, want:%d, but got:%d", index, except[index], result)
+			return
+		}
+	}
+}
+
+func TestHasCycle(t *testing.T) {
+	cases := []*ListNode{
+		genCycleList([]int{3, 2, 0, -4}, 2),
+		genCycleList([]int{1, 2}, 0),
+		genCycleList([]int{1, 2}, -1),
+	}
+
+	except := []bool{true, true, false}
+	for index, data := range cases {
+		result := hasCycle(data)
+		if except[index] != result {
+			t.Errorf("index:%d, want:%t, but got:%t", index, except[index], result)
+			return
+		}
+	}
+}

@@ -16,6 +16,24 @@ func genListNode(nums []int) *ListNode {
 	return head.Next
 }
 
+func genCycleList(nums []int, pos int) *ListNode {
+	list := genListNode(nums)
+	if pos == -1 {
+		return list
+	}
+
+	head := list
+	var arr []*ListNode
+	for head != nil {
+		arr = append(arr, head)
+		head = head.Next
+	}
+	tail := arr[len(arr)-1]
+	tail.Next = arr[pos]
+
+	return list
+}
+
 func stringListNode(l *ListNode) string {
 	var nums []string
 	for l != nil {
