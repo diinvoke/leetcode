@@ -200,12 +200,13 @@ func TestStrStr(t *testing.T) {
 
 func TestHasCycle(t *testing.T) {
 	cases := []*ListNode{
+		genCycleList([]int{3, 2, 0, -4, 5}, 1),
 		genCycleList([]int{3, 2, 0, -4}, 2),
 		genCycleList([]int{1, 2}, 0),
 		genCycleList([]int{1, 2}, -1),
 	}
 
-	except := []bool{true, true, false}
+	except := []bool{true, true, true, false}
 	for index, data := range cases {
 		result := hasCycle(data)
 		if except[index] != result {
