@@ -230,3 +230,25 @@ func TestSwapPairs(t *testing.T) {
 		}
 	}
 }
+
+func TestDivide(t *testing.T) {
+	type testData struct {
+		dividend int
+		divisor  int
+	}
+	cases := []testData{
+		{10, 3},
+		{7, -3},
+		{-2147483648, 1},
+		{-2147483648, -1},
+	}
+	except := []int{3, -2, -2147483648, 2147483647}
+
+	for index, data := range cases {
+		result := divide(data.dividend, data.divisor)
+		if except[index] != result {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], result)
+			return
+		}
+	}
+}
