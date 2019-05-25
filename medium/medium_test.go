@@ -252,3 +252,72 @@ func TestDivide(t *testing.T) {
 		}
 	}
 }
+
+func TestNextPermutation(t *testing.T) {
+	cases := [][]int{
+		{1, 2, 3},
+		{3, 2, 1},
+		{1, 1, 5},
+		{1, 2, 7, 4, 3, 1},
+	}
+
+	except := [][]int{
+		{1, 3, 2},
+		{1, 2, 3},
+		{1, 5, 1},
+		{1, 3, 1, 2, 4, 7},
+	}
+
+	for index, nums := range cases {
+		nextPermutation(nums)
+		if !tools.EqualIntSlice(except[index], nums) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], nums)
+			return
+		}
+	}
+}
+
+func TestPermute(t *testing.T) {
+	cases := [][]int{
+		{1, 2, 3},
+	}
+	except := [][][]int{
+		{
+			{1, 2, 3},
+			{1, 3, 2},
+			{2, 1, 3},
+			{2, 3, 1},
+			{3, 1, 2},
+			{3, 2, 1},
+		},
+	}
+
+	for index, nums := range cases {
+		result := permute(nums)
+		if !tools.EqualDoubleSlice(except[index], result, true) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], result)
+			return
+		}
+	}
+}
+
+func TestPermuteUnique(t *testing.T) {
+	cases := [][]int{
+		{1, 1, 2},
+	}
+	except := [][][]int{
+		{
+			{1, 1, 2},
+			{1, 2, 1},
+			{2, 1, 1},
+		},
+	}
+
+	for index, nums := range cases {
+		result := permuteUnique(nums)
+		if !tools.EqualDoubleSlice(except[index], result, true) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], result)
+			return
+		}
+	}
+}
