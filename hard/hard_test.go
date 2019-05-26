@@ -113,3 +113,25 @@ func TestReverseKGroup(t *testing.T) {
 		}
 	}
 }
+
+func TestLongestValidParentheses(t *testing.T) {
+	cases := []string{
+		"()(()",
+		"(()",
+		")()())",
+		")))))))",
+		"()(())",
+	}
+
+	except := []int{
+		2, 2, 4, 0, 6,
+	}
+
+	for index, s := range cases {
+		result := longestValidParentheses(s)
+		if result != except[index] {
+			t.Errorf("index:%d, want:%d, but got:%d", index, except[index], result)
+			return
+		}
+	}
+}

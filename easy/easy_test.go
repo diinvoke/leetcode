@@ -215,3 +215,25 @@ func TestHasCycle(t *testing.T) {
 		}
 	}
 }
+
+func TestReverseOnlyLetters(t *testing.T) {
+	cases := []string{
+		"ab-cd",
+		"a-bC-dEf-ghIj",
+		"Test1ng-Leet=code-Q!",
+	}
+
+	except := []string{
+		"dc-ba",
+		"j-Ih-gfE-dCba",
+		"Qedo1ct-eeLg=ntse-T!",
+	}
+
+	for index, S := range cases {
+		result := reverseOnlyLetters(S)
+		if except[index] != result {
+			t.Errorf("index:%d, want:%d, but got:%d", index, except[index], result)
+			return
+		}
+	}
+}
