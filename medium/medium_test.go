@@ -321,3 +321,24 @@ func TestPermuteUnique(t *testing.T) {
 		}
 	}
 }
+
+func TestSearchRotatedSorted(t *testing.T) {
+	type data struct {
+		nums   []int
+		target int
+	}
+	cases := []data{
+		{[]int{4, 5, 6, 7, 0, 1, 2}, 0},
+		{[]int{4, 5, 6, 7, 0, 1, 2}, 3},
+	}
+
+	except := []int{4, -1}
+
+	for index, testData := range cases {
+		result := searchRotatedSorted(testData.nums, testData.target)
+		if except[index] != result {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], result)
+			return
+		}
+	}
+}

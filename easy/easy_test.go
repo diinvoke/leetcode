@@ -237,3 +237,26 @@ func TestReverseOnlyLetters(t *testing.T) {
 		}
 	}
 }
+
+func TestSearchInsert(t *testing.T) {
+	type data struct {
+		nums   []int
+		target int
+	}
+	cases := []data{
+		{[]int{1, 3, 5, 6}, 5},
+		{[]int{1, 3, 5, 6}, 2},
+		{[]int{1, 3, 5, 6}, 7},
+		{[]int{1, 3, 5, 6}, 0},
+	}
+
+	except := []int{2, 1, 4, 0}
+
+	for index, testData := range cases {
+		result := searchInsert(testData.nums, testData.target)
+		if except[index] != result {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], result)
+			//return
+		}
+	}
+}
