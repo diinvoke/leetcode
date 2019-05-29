@@ -342,3 +342,35 @@ func TestSearchRotatedSorted(t *testing.T) {
 		}
 	}
 }
+
+func TestSearchRange(t *testing.T) {
+	type data struct {
+		nums   []int
+		target int
+	}
+	cases := []data{
+		{[]int{5, 7, 7, 8, 8, 10}, 8},
+		{[]int{5, 7, 7, 8, 8, 10}, 6},
+		{[]int{5, 7, 7, 8, 8, 10}, 8},
+		{[]int{1, 2, 2, 3, 4, 4, 4}, 4},
+		{[]int{1}, 1},
+		{[]int{2, 2}, 2},
+	}
+
+	except := [][]int{
+		{3, 4},
+		{-1, -1},
+		{3, 4},
+		{4, 6},
+		{0, 0},
+		{0, 1},
+	}
+	for index, testData := range cases {
+		result := searchRange(testData.nums, testData.target)
+		if !tools.EqualIntSlice(except[index], result) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], result)
+			return
+		}
+	}
+
+}
