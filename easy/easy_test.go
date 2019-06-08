@@ -256,7 +256,31 @@ func TestSearchInsert(t *testing.T) {
 		result := searchInsert(testData.nums, testData.target)
 		if except[index] != result {
 			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], result)
-			//return
+			return
+		}
+	}
+}
+
+func TestCountAndSay(t *testing.T) {
+	cases := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	except := []string{
+		"1",
+		"11",
+		"21",
+		"1211",
+		"111221",
+		"312211",
+		"13112221",
+		"1113213211",
+		"31131211131221",
+		"13211311123113112211",
+	}
+
+	for index, n := range cases {
+		result := countAndSayLoop(n)
+		if except[index] != result {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, except[index], result)
+			return
 		}
 	}
 }

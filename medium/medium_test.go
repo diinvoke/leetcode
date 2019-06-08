@@ -374,3 +374,18 @@ func TestSearchRange(t *testing.T) {
 	}
 
 }
+
+func TestCombinationSum(t *testing.T) {
+	type testData struct {
+		candidates []int
+		target     int
+	}
+	cases := []testData{
+		{[]int{2, 3, 6, 7}, 7},
+	}
+
+	for _, data := range cases {
+		result := combinationSum(data.candidates, data.target)
+		t.Logf("----->%+v", result)
+	}
+}
