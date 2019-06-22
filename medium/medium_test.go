@@ -389,3 +389,57 @@ func TestCombinationSum(t *testing.T) {
 		t.Logf("----->%+v", result)
 	}
 }
+
+func TestCombinationSum2(t *testing.T) {
+	type testData struct {
+		candidates []int
+		target     int
+	}
+	cases := []testData{
+		{[]int{10, 1, 2, 7, 6, 1, 5}, 8},
+		//{[]int{2, 5, 2, 1, 2}, 5},
+	}
+
+	for _, data := range cases {
+		result := combinationSum2(data.candidates, data.target)
+		t.Logf("----->%+v", result)
+	}
+}
+
+func TestAddTwo(t *testing.T) {
+	type testData struct {
+		num1 []int
+		num2 []int
+	}
+	cases := []testData{
+		{[]int{8, 6, 3, 1}, []int{0, 2, 1, 9}},
+		{[]int{8, 8, 4, 0, 1}, []int{0, 0, 6, 5, 4}},
+	}
+
+	for _, data := range cases {
+		result := addTwo(data.num1, data.num2)
+		t.Logf("%+v", result)
+	}
+}
+
+func TestMultiply(t *testing.T) {
+	type testData struct {
+		num1 string
+		num2 string
+	}
+	cases := []testData{
+		{"123", "456"},
+		{"2", "3"},
+		{"9133", "0"},
+		{"2321435435", "464565765765876"},
+	}
+
+	for index, data := range cases {
+		result := multiply(data.num1, data.num2)
+		result2 := multiply2(data.num1, data.num2)
+		if result2 != result {
+			t.Errorf("index:%d, want:%+v, but got:%+v", index, result, result2)
+			return
+		}
+	}
+}
