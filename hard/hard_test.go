@@ -135,3 +135,21 @@ func TestLongestValidParentheses(t *testing.T) {
 		}
 	}
 }
+
+func TestEditDistance(t *testing.T) {
+	testData := [][]string{
+		{"", "a"},
+		{"horse", "ros"},
+		{"kitten", "sitting"},
+		{"intention", "execution"},
+	}
+
+	except := []int{1, 3, 3, 5}
+	for index, data := range testData {
+		minDis := EditDistance(data[0], data[1])
+		if minDis != except[index] {
+			t.Errorf("index:%d, want:%d, but got:%d", index, except[index], minDis)
+			return
+		}
+	}
+}
