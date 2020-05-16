@@ -443,3 +443,26 @@ func TestMultiply(t *testing.T) {
 		}
 	}
 }
+
+func TestRemoveDuplicates(t *testing.T) {
+	type exceptData struct {
+		array  []int
+		length int
+	}
+	cases := [][]int{
+		{1, 1, 1, 2, 2, 3},
+		{0, 0, 1, 1, 1, 1, 2, 3, 3},
+	}
+	except := []*exceptData{
+		{[]int{1, 1, 2, 2, 3}, 5},
+		{[]int{0, 0, 1, 1, 2, 3, 3}, 7},
+	}
+
+	for i, array := range cases {
+		length := RemoveDuplicates(array)
+		if length != except[i].length || !tools.EqualIntSlice(except[i].array, array[0:length]) {
+			t.Errorf("index:%d, len:%d, want:%+v, but got:%+v", i, length, except[i].array, array[0:length])
+			return
+		}
+	}
+}
