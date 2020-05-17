@@ -284,3 +284,28 @@ func TestCountAndSay(t *testing.T) {
 		}
 	}
 }
+
+func TestRotateArray(t *testing.T) {
+	type testData struct {
+		k     int
+		array []int
+	}
+
+	cases := []*testData{
+		{3, []int{1, 2, 3, 4, 5, 6, 7}},
+		{2, []int{-1, -100, 3, 99}},
+	}
+
+	except := [][]int{
+		{5, 6, 7, 1, 2, 3, 4},
+		{3, 99, -1, -100},
+	}
+
+	for i, testCase := range cases {
+		RotateArray2(testCase.array, testCase.k)
+		if !tools.EqualIntSlice(testCase.array, except[i]) {
+			t.Errorf("index:%d, want:%+v, but got:%+v", i, except[i], testCase.array)
+			return
+		}
+	}
+}
