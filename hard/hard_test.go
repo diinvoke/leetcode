@@ -153,3 +153,19 @@ func TestEditDistance(t *testing.T) {
 		}
 	}
 }
+
+func TestFirstMissingPositive(t *testing.T) {
+	cases := [][]int{
+		{1, 2, 0},
+		{3, 4, -1, 1},
+		{7, 8, 9, 11, 12},
+	}
+
+	except := []int{3, 2, 1}
+	for i, array := range cases {
+		if FirstMissingPositive2(array) != except[i] {
+			t.Errorf("index:%d want:%d, but got:%d", i, except[i], FirstMissingPositive(array))
+			return
+		}
+	}
+}
