@@ -309,3 +309,23 @@ func TestRotateArray(t *testing.T) {
 		}
 	}
 }
+
+func TestGetHint(t *testing.T) {
+	cases := [][]string{
+		{"1807", "7810"},
+		{"1123", "0111"},
+		{"11", "11"},
+		{"1122", "2211"},
+		{"1122", "1222"},
+	}
+	except := []string{
+		"1A3B", "1A1B", "2A0B", "0A4B", "3A0B",
+	}
+
+	for i, testData := range cases {
+		if except[i] != GetHint2(testData[0], testData[1]) {
+			t.Errorf("index:%d, want got:%s, but got:%s", i, except[i], GetHint2(testData[0], testData[1]))
+			//return
+		}
+	}
+}
