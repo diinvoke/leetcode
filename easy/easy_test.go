@@ -329,3 +329,11 @@ func TestGetHint(t *testing.T) {
 		}
 	}
 }
+
+func TestGeneratePascalTriangle(t *testing.T) {
+	cases := []int{7}
+	for _, testData := range cases {
+		val := GeneratePascalTriangle(testData)
+		t.Logf("%+v", val)
+	}
+}

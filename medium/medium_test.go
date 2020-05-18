@@ -466,3 +466,20 @@ func TestRemoveDuplicates(t *testing.T) {
 		}
 	}
 }
+
+func TestCanCompleteCircuit(t *testing.T) {
+	cases := [][][]int{
+		{{1, 2, 3, 4, 5}, {3, 4, 5, 1, 2}},
+		{{2, 3, 4}, {3, 4, 3}},
+		{{5, 1, 2, 3, 4}, {4, 4, 1, 5, 1}},
+	}
+	except := []int{3, -1, 4}
+
+	for i, testData := range cases {
+		val := CanCompleteCircuit(testData[0], testData[1])
+		if except[i] != val {
+			t.Errorf("index:%d, want %d, but got %d", i, except[i], val)
+			return
+		}
+	}
+}
