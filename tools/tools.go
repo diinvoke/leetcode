@@ -18,6 +18,12 @@ func EqualIntSlice(s1, s2 []int) bool {
 	return true
 }
 
+func HasSameElement(s1, s2 []int) bool {
+	sort.Ints(s1)
+	sort.Ints(s2)
+	return EqualIntSlice(s1, s2)
+}
+
 func EqualDoubleSlice(s1, s2 [][]int, needSort bool) bool {
 	var ss1 []int
 	var ss2 []int

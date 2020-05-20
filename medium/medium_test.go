@@ -483,3 +483,22 @@ func TestCanCompleteCircuit(t *testing.T) {
 		}
 	}
 }
+
+func TestMajorityElement(t *testing.T) {
+	cases := [][]int{
+		{3, 2, 3},
+		{1, 1, 1, 3, 3, 2, 2, 2},
+	}
+	except := [][]int{
+		{3},
+		{1, 2},
+	}
+
+	for i, nums := range cases {
+		ret := MajorityElement(nums)
+		if !tools.HasSameElement(ret, except[i]) {
+			t.Errorf("index:%d want:%+v but got: %+v", i, except[i], ret)
+			return
+		}
+	}
+}
