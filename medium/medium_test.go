@@ -510,7 +510,7 @@ func TestHIndex(t *testing.T) {
 	except := []int{3}
 
 	for i, citations := range cases {
-		ret := HIndex(citations)
+		ret := HIndex2(citations)
 		if except[i] != ret {
 			t.Errorf("index:%d want:%d but got:%d", i, except[i], ret)
 			return
