@@ -337,3 +337,25 @@ func TestGeneratePascalTriangle(t *testing.T) {
 		t.Logf("%+v", val)
 	}
 }
+
+func TestContainsNearbyDuplicate(t *testing.T) {
+	type testData struct {
+		nums []int
+		k    int
+	}
+	cases := []testData{
+		{[]int{1, 2, 3, 1}, 3},
+		{[]int{1, 0, 1, 1}, 1},
+		{[]int{1, 2, 3, 1, 2, 3}, 2},
+	}
+	except := []bool{
+		true, true, false,
+	}
+	for i, data := range cases {
+		ret := ContainsNearbyDuplicate(data.nums, data.k)
+		if ret != except[i] {
+			t.Errorf("index:%d, want:%t but got:%t", i, except[i], ret)
+			return
+		}
+	}
+}
