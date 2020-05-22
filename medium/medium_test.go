@@ -517,3 +517,28 @@ func TestHIndex(t *testing.T) {
 		}
 	}
 }
+
+func TestContainsNearbyAlmostDuplicate(t *testing.T) {
+	type tt struct {
+		nums []int
+		k, t int
+	}
+
+	cases := []tt{
+		{[]int{1, 2, 3, 1}, 3, 0},
+		{[]int{1, 0, 1, 1}, 1, 2},
+		{[]int{1, 5, 9, 1, 5, 9}, 2, 3},
+	}
+
+	except := []bool{
+		true, true, false,
+	}
+
+	for i, ttt := range cases {
+		ret := ContainsNearbyAlmostDuplicate(ttt.nums, ttt.k, ttt.t)
+		if except[i] != ret {
+			t.Errorf("index:%d, want:%t but got:%t", i, except[i], ret)
+			return
+		}
+	}
+}
