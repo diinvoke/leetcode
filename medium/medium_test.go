@@ -542,3 +542,21 @@ func TestContainsNearbyAlmostDuplicate(t *testing.T) {
 		}
 	}
 }
+
+func TestCanJump(t *testing.T) {
+	cases := [][]int{
+		{2, 3, 1, 1, 4},
+		{3, 2, 1, 0, 4},
+	}
+	except := []bool{
+		true, false,
+	}
+
+	for i, nums := range cases {
+		ret := CanJump(nums)
+		if except[i] != ret {
+			t.Errorf("index:%d, want:%t but got:%t", i, except[i], ret)
+			return
+		}
+	}
+}
