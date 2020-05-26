@@ -3,6 +3,7 @@ package medium
 import "math"
 
 /*
+https://www.cnblogs.com/grandyang/p/4997417.html
 309. Best Time to Buy and Sell Stock with Cooldown https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/
 
 Say you have an array for which the ith element is the price of a given stock on day i.
