@@ -169,3 +169,17 @@ func TestFirstMissingPositive(t *testing.T) {
 		}
 	}
 }
+
+func TestLongestConsecutive(t *testing.T) {
+	cases := [][]int{
+		{100, 4, 200, 1, 3, 2},
+	}
+	except := []int{4}
+	for i, nums := range cases {
+		ret := longestConsecutive(nums)
+		if except[i] != ret {
+			t.Errorf("index:%d want:%d but got:%d", i, except[i], ret)
+			return
+		}
+	}
+}
