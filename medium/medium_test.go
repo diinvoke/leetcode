@@ -560,3 +560,22 @@ func TestCanJump(t *testing.T) {
 		}
 	}
 }
+
+func TestIncreasingTriplet(t *testing.T) {
+	cases := [][]int{
+		{2, 1, 5, 0, 4, 6},
+		{2, 4, -2, -3},
+		{5, 1, 5, 5, 2, 5, 4},
+	}
+	except := []bool{
+		true, false, true,
+	}
+
+	for i, nums := range cases {
+		ret := increasingTriplet(nums)
+		if except[i] != ret {
+			t.Errorf("index:%d want:%t but got:%t", i, except[i], ret)
+			return
+		}
+	}
+}
