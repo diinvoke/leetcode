@@ -183,3 +183,18 @@ func TestLongestConsecutive(t *testing.T) {
 		}
 	}
 }
+
+func TestCandy(t *testing.T) {
+	cases := [][]int{
+		{1, 0, 2},
+		{1, 2, 2},
+	}
+	except := []int{5, 4}
+	for i, ratings := range cases {
+		ret := candy2(ratings)
+		if except[i] != ret {
+			t.Errorf("index:%d want:%d but got:%d", i, except[i], ret)
+			return
+		}
+	}
+}
