@@ -1,6 +1,7 @@
 package hard
 
 /*
+https://blog.csdn.net/yutianzuijin/article/details/11499917
 here are two sorted arrays nums1 and nums2 of size m and n respectively.
 
 Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
@@ -114,8 +115,8 @@ func findMinK(nums1 []int, m int, nums2 []int, n int, k int) int {
 	}
 
 	pa := min(k/2, m)
-	pb := k - pa
-	if nums1[pa-1] == nums2[pb-1] {
+	pb := k - pa                    // A 和 B 数量加起来要等于 k
+	if nums1[pa-1] == nums2[pb-1] { // 减一是为了下标减一
 		return nums1[pa-1]
 	}
 	if nums1[pa-1] < nums2[pb-1] {
