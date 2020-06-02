@@ -359,3 +359,19 @@ func TestContainsNearbyDuplicate(t *testing.T) {
 		}
 	}
 }
+
+func TestLengthOfLastWord(t *testing.T) {
+	cases := []string{
+		"Hello World",
+	}
+	except := []int{
+		5,
+	}
+	for i, s := range cases {
+		ret := lengthOfLastWord(s)
+		if except[i] != ret {
+			t.Errorf("index:%d, want:%d but got:%d", i, except[i], ret)
+			return
+		}
+	}
+}

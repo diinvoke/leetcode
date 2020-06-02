@@ -41,7 +41,7 @@ func strStr(haystack string, needle string) int {
 			continue
 		}
 
-		if i+needleLen <= haystackLen && haystack[i:i+needleLen] == needle {
+		if haystack[i:i+needleLen] == needle {
 			return i
 		}
 	}
