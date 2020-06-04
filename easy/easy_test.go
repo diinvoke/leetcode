@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/diinvoke/leetcode/tools"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestTwoSum(t *testing.T) {
@@ -232,7 +233,7 @@ func TestReverseOnlyLetters(t *testing.T) {
 	for index, S := range cases {
 		result := reverseOnlyLetters(S)
 		if except[index] != result {
-			t.Errorf("index:%d, want:%d, but got:%d", index, except[index], result)
+			t.Errorf("index:%d, want:%s, but got:%s", index, except[index], result)
 			return
 		}
 	}
@@ -374,4 +375,17 @@ func TestLengthOfLastWord(t *testing.T) {
 			return
 		}
 	}
+}
+
+func TestFirstUniqChar(t *testing.T) {
+	Convey("test", t, func() {
+		cases := []string{
+			"leetcode", "loveleetcode",
+		}
+		except := []int{0, 2}
+		for i, s := range cases {
+			ret := firstUniqChar(s)
+			So(ret, ShouldEqual, except[i])
+		}
+	})
 }
