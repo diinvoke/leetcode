@@ -389,3 +389,20 @@ func TestFirstUniqChar(t *testing.T) {
 		}
 	})
 }
+
+func TestReverseString(t *testing.T) {
+	cases := [][]byte{
+		{'h', 'e', 'l', 'l', 'o'},
+		{'H', 'a', 'n', 'n', 'a', 'h'},
+	}
+	except := [][]byte{
+		{'o', 'l', 'l', 'e', 'h'},
+		{'h', 'a', 'n', 'n', 'a', 'H'},
+	}
+	Convey("test reverseString", t, func() {
+		for i, s := range cases {
+			reverseString(s)
+			So(string(s), ShouldEqual, string(except[i]))
+		}
+	})
+}
