@@ -406,3 +406,22 @@ func TestReverseString(t *testing.T) {
 		}
 	})
 }
+
+func TestIsIsomorphic(t *testing.T) {
+	cases := [][]string{
+		{"egg", "add"},
+		{"foo", "bar"},
+		{"paper", "title"},
+		{"abba", "abab"},
+	}
+	except := []bool{
+		true, false, true, false,
+	}
+
+	Convey("test isIsomorphic", t, func() {
+		for i, c := range cases {
+			ret := isIsomorphic2(c[0], c[1])
+			So(ret, ShouldEqual, except[i])
+		}
+	})
+}
