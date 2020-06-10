@@ -80,3 +80,7 @@ func (s *simpleStack) peek() int {
 
 	return s.array[len(s.array)-1]
 }
+
+func (s *simpleStack) count() int {
+	return len(s.array)
+}

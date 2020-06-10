@@ -1,6 +1,10 @@
 package hard
 
-import "testing"
+import (
+	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
+)
 
 func TestFindMedianSortedArrays(t *testing.T) {
 	type data struct {
@@ -197,4 +201,16 @@ func TestCandy(t *testing.T) {
 			return
 		}
 	}
+}
+
+func TestRemoveDuplicateLetters(t *testing.T) {
+	cases := []string{
+		"bcabc", "cbacdcbc",
+	}
+	except := []string{"abc", "acdb"}
+	Convey("test removeDuplicateLetters", t, func() {
+		for i, s := range cases {
+			So(removeDuplicateLetters(s), ShouldEqual, except[i])
+		}
+	})
 }
