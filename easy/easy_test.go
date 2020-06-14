@@ -425,3 +425,17 @@ func TestIsIsomorphic(t *testing.T) {
 		}
 	})
 }
+
+func TestConvertToTitle(t *testing.T) {
+	cases := []int{
+		1, 28, 701,
+	}
+	except := []string{
+		"A", "AB", "ZY",
+	}
+	Convey("test convertToTitle", t, func() {
+		for i, n := range cases {
+			So(convertToTitle(n), ShouldEqual, except[i])
+		}
+	})
+}
