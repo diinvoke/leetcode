@@ -1,6 +1,8 @@
 package easy
 
 import (
+	"fmt"
+	"math"
 	"testing"
 
 	"github.com/diinvoke/leetcode/tools"
@@ -433,6 +435,8 @@ func TestConvertToTitle(t *testing.T) {
 	except := []string{
 		"A", "AB", "ZY",
 	}
+
+	fmt.Println(int64(math.Pow(3, 3)))
 	Convey("test convertToTitle", t, func() {
 		for i, n := range cases {
 			So(convertToTitle(n), ShouldEqual, except[i])
