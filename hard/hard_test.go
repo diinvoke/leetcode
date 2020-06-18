@@ -214,3 +214,19 @@ func TestRemoveDuplicateLetters(t *testing.T) {
 		}
 	})
 }
+
+func TestNumberToWords(t *testing.T) {
+	cases := []int{101, 123, 12345, 1234567, 1234567891}
+	except := []string{
+		"One Hundred One",
+		"One Hundred Twenty Three",
+		"Twelve Thousand Three Hundred Forty Five",
+		"One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven",
+		"One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One",
+	}
+	Convey("test numberToWords", t, func() {
+		for i, num := range cases {
+			So(numberToWords(num), ShouldEqual, except[i])
+		}
+	})
+}
