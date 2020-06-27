@@ -1,7 +1,7 @@
 package hard
 
 /*
-10. Regular Expression Matching https://leetcode.com/problems/regular-expression-matching/
+10. Regular Expression Matching https://leetcode.com/problems/regular-expression-matching/ https://juejin.im/post/5d39f62bf265da1b6a34d9fb
 Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
 
 '.' Matches any single character.
@@ -49,15 +49,15 @@ Output: false
 */
 
 func isMatch(s string, p string) bool {
-    if len(s) == 0 && len(p) == 0 || s == p {
-        return true
-    }
-    
-    firstMatch := (len(s) > 0 && len(p) > 0 && (s[0] == p[0] || p[0] == '.'))
-    
-    if len(p) >= 2 && p[1] == '*'{
-        return isMatch(s, p[2:]) || (firstMatch && isMatch(s[1:], p))
-    }
-    
-    return firstMatch && isMatch(s[1:], p[1:])
+	if len(s) == 0 && len(p) == 0 || s == p {
+		return true
+	}
+
+	firstMatch := (len(s) > 0 && len(p) > 0 && (s[0] == p[0] || p[0] == '.'))
+
+	if len(p) >= 2 && p[1] == '*' {
+		return isMatch(s, p[2:]) || (firstMatch && isMatch(s[1:], p))
+	}
+
+	return firstMatch && isMatch(s[1:], p[1:])
 }
