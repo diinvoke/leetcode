@@ -443,3 +443,25 @@ func TestConvertToTitle(t *testing.T) {
 		}
 	})
 }
+
+func TestPlusOne(t *testing.T) {
+	cases := [][]int{
+		{1, 2, 3},
+		{4, 3, 2, 1},
+		{1, 2, 9},
+		{9, 9, 9, 9},
+	}
+	except := [][]int{
+		{1, 2, 4},
+		{4, 3, 2, 2},
+		{1, 3, 0},
+		{1, 0, 0, 0, 0},
+	}
+
+	Convey("test plus one", t, func() {
+		for i, nums := range cases {
+			fmt.Println(plusOne(nums))
+			So(tools.EqualIntSlice(plusOne(nums), except[i]), ShouldEqual, true)
+		}
+	})
+}
