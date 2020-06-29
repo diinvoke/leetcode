@@ -465,3 +465,20 @@ func TestPlusOne(t *testing.T) {
 		}
 	})
 }
+
+func TestAddBinary(t *testing.T) {
+	cases := [][]string{
+		{"11", "1"},
+		{"1010", "1011"},
+		{"1011", "1011"},
+	}
+	except := []string{
+		"100", "10101", "10110",
+	}
+
+	Convey("test add binary", t, func() {
+		for i, testDatas := range cases {
+			So(addBinary(testDatas[0], testDatas[1]), ShouldEqual, except[i])
+		}
+	})
+}
