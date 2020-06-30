@@ -1,9 +1,11 @@
 package medium
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/diinvoke/leetcode/tools"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestEqualListNode(t *testing.T) {
@@ -107,7 +109,7 @@ func TestMaxArea(t *testing.T) {
 
 	for index, testCase := range cases {
 		if except[index] != MaxArea(testCase) {
-			t.Errorf("index:%d, want:%d, but got:%d", except[index], MaxArea(testCase))
+			t.Errorf("index:%d, want:%d, but got:%d", index, except[index], MaxArea(testCase))
 			return
 		}
 	}
@@ -578,4 +580,34 @@ func TestIncreasingTriplet(t *testing.T) {
 			return
 		}
 	}
+}
+
+func TestSpiralOrder(t *testing.T) {
+	cases := [][][]int{
+		{
+			{1, 2, 3},
+			{4, 5, 6},
+			{7, 8, 9},
+		},
+		{
+			{1, 2, 3, 4},
+			{5, 6, 7, 8},
+			{9, 10, 11, 12},
+		},
+	}
+	except := [][]int{
+		{1, 2, 3, 6, 9, 8, 7, 4, 5},
+		{1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7},
+	}
+
+	Convey("test spiralOrder", t, func() {
+		for i, matrix := range cases {
+			So(spiralOrder(matrix), func(actual interface{}, expected ...interface{}) string {
+				if tools.EqualIntSlice(spiralOrder(matrix), except[i]) {
+					return ""
+				}
+				return fmt.Sprintf("want:   %+v\nactual: %+v", except[i], spiralOrder(matrix))
+			}, "")
+		}
+	})
 }
