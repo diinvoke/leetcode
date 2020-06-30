@@ -611,3 +611,73 @@ func TestSpiralOrder(t *testing.T) {
 		}
 	})
 }
+
+func TestMergeIntervals(t *testing.T) {
+	cases := [][][]int{
+		{
+			{1, 3},
+			{2, 6},
+			{8, 10},
+			{15, 18},
+		},
+		{
+			{1, 4},
+			{4, 5},
+		},
+		{
+			{1, 9},
+			{2, 5},
+			{19, 20},
+			{10, 11},
+			{12, 20},
+			{0, 3},
+			{0, 1},
+			{0, 2},
+		},
+		{
+			{1, 4},
+			{0, 2},
+			{3, 5},
+		},
+		{
+			{2, 3},
+			{5, 5},
+			{2, 2},
+			{3, 4},
+			{3, 4},
+		},
+	}
+	except := [][][]int{
+		{
+			{1, 6},
+			{8, 10},
+			{15, 18},
+		},
+		{
+			{1, 5},
+		},
+		{
+			{0, 9},
+			{10, 11},
+			{12, 20},
+		},
+		{
+			{0, 5},
+		},
+		{
+			{2, 4},
+			{5, 5},
+		},
+	}
+
+	Convey("test mergeIntervals", t, func() {
+		for i, intervals := range cases {
+			So(mergeIntervals(intervals), func(actual interface{}, expected ...interface{}) string {
+				if tools.EqualDoubleSlice(mergeIntervals(intervals), except[i], false) {
+					return ""
+				}
+				return fmt.Sprintf("want:   %+v\nactual: %+v", except[i], mergeIntervals(intervals))
+			}, "")
+		}
+	})
+}
