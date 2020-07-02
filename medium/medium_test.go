@@ -681,3 +681,28 @@ func TestMergeIntervals(t *testing.T) {
 		}
 	})
 }
+
+func TestGenerateMatrix(t *testing.T) {
+	cases := []int{
+		3,
+	}
+	except := [][][]int{
+		{
+			{1, 2, 3},
+			{8, 9, 4},
+			{7, 6, 5},
+		},
+	}
+
+	Convey("test generateMatrix", t, func() {
+		for i, num := range cases {
+			matrix := generateMatrix(num)
+			So(spiralOrder(matrix), func(actual interface{}, expected ...interface{}) string {
+				if tools.EqualIntSlice(spiralOrder(matrix), spiralOrder(except[i])) {
+					return ""
+				}
+				return fmt.Sprintf("want:   %+v\nactual: %+v", except[i], matrix)
+			}, "")
+		}
+	})
+}
