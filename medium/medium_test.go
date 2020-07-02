@@ -706,3 +706,21 @@ func TestGenerateMatrix(t *testing.T) {
 		}
 	})
 }
+
+func TestGetPermutation(t *testing.T) {
+	cases := [][]int{
+		{3, 3},
+		{4, 9},
+	}
+
+	except := []string{
+		"213",
+		"2314",
+	}
+
+	Convey("test getPermutation", t, func() {
+		for i, cc := range cases {
+			So(getPermutation(cc[0], cc[1]), ShouldEqual, except[i])
+		}
+	})
+}
