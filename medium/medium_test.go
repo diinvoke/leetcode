@@ -724,3 +724,25 @@ func TestGetPermutation(t *testing.T) {
 		}
 	})
 }
+
+func TestRotateRight(t *testing.T) {
+	cases := [][]int{
+		{1, 2, 3, 4, 5, 2},
+		{0, 1, 2, 4},
+		{1, 1},
+	}
+	except := [][]int{
+		{4, 5, 1, 2, 3},
+		{2, 0, 1},
+		{1},
+	}
+
+	Convey("test rotateRight", t, func() {
+		for i, nums := range cases {
+			head := genListNode(nums[:len(nums)-1])
+			k := nums[len(nums)-1]
+			head = rotateRight4(head, k)
+			So(stringListNode(head), ShouldEqual, stringListNode(genListNode(except[i])))
+		}
+	})
+}
