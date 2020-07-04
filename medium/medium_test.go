@@ -746,3 +746,18 @@ func TestRotateRight(t *testing.T) {
 		}
 	})
 }
+
+func TestUniquePaths(t *testing.T) {
+	cases := [][]int{
+		{3, 2},
+		{7, 3},
+	}
+	except := []int{
+		3, 28,
+	}
+	Convey("test uniquePaths", t, func() {
+		for i, n := range cases {
+			So(uniquePaths(n[0], n[1]), ShouldEqual, except[i])
+		}
+	})
+}
