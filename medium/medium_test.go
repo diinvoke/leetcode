@@ -757,7 +757,7 @@ func TestUniquePaths(t *testing.T) {
 	}
 	Convey("test uniquePaths", t, func() {
 		for i, n := range cases {
-			So(uniquePaths(n[0], n[1]), ShouldEqual, except[i])
+			So(uniquePaths2(n[0], n[1]), ShouldEqual, except[i])
 		}
 	})
 }
