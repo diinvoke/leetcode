@@ -761,3 +761,25 @@ func TestUniquePaths(t *testing.T) {
 		}
 	})
 }
+
+func TestMinPathSum(t *testing.T) {
+	cases := [][][]int{
+		{
+			{1, 3, 1},
+			{1, 5, 1},
+			{4, 2, 1},
+		},
+		{
+			{1, 2, 5},
+			{3, 2, 1},
+		},
+	}
+	except := []int{
+		7, 6,
+	}
+	Convey("test minPathSum", t, func() {
+		for i, grid := range cases {
+			So(minPathSum(grid), ShouldEqual, except[i])
+		}
+	})
+}
