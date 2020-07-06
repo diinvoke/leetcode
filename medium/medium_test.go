@@ -783,3 +783,35 @@ func TestMinPathSum(t *testing.T) {
 		}
 	})
 }
+
+func TestUniquePathsWithObstacles(t *testing.T) {
+	cases := [][][]int{
+		{
+			{0},
+			{1},
+		},
+		{
+			{0, 0, 0},
+			{0, 1, 0},
+			{0, 0, 0},
+		},
+		{
+			{1, 0},
+		},
+		{
+			{0, 1, 0, 0, 0},
+			{1, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0},
+		},
+	}
+
+	except := []int{
+		0, 2, 0, 0,
+	}
+	Convey("test uniquePathsWithObstacles", t, func() {
+		for i, obstacleGrid := range cases {
+			So(uniquePathsWithObstacles2(obstacleGrid), ShouldEqual, except[i])
+		}
+	})
+}
