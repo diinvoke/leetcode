@@ -482,3 +482,18 @@ func TestAddBinary(t *testing.T) {
 		}
 	})
 }
+
+func TestClimbStairs(t *testing.T) {
+	cases := []int{
+		2, 3,
+	}
+	except := []int{
+		2, 3,
+	}
+
+	Convey("test climbStairs", t, func() {
+		for i, n := range cases {
+			So(climbStairs(n), ShouldEqual, except[i])
+		}
+	})
+}
