@@ -815,3 +815,18 @@ func TestUniquePathsWithObstacles(t *testing.T) {
 		}
 	})
 }
+
+func TestSimplifyPath(t *testing.T) {
+	cases := []string{
+		"/home/", "/../", "/home//foo/", "/a/./b/../../c/", "/a/../../b/../c//.//", "/a//b////c/d//././/..",
+	}
+	except := []string{
+		"/home", "/", "/home/foo", "/c", "/c", "/a/b/c",
+	}
+
+	Convey("test simplifyPath", t, func() {
+		for i, path := range cases {
+			So(simplifyPath(path), ShouldEqual, except[i])
+		}
+	})
+}
