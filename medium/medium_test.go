@@ -830,3 +830,54 @@ func TestSimplifyPath(t *testing.T) {
 		}
 	})
 }
+
+func TestSetZeroes(t *testing.T) {
+	cases := [][][]int{
+		{
+			{1, 1, 1},
+			{1, 0, 1},
+			{1, 1, 1},
+		},
+		{
+			{0, 1, 2, 0},
+			{3, 4, 5, 2},
+			{1, 3, 1, 5},
+		},
+		{
+			{-1},
+			{2},
+			{3},
+		},
+	}
+
+	except := [][][]int{
+		{
+			{1, 0, 1},
+			{0, 0, 0},
+			{1, 0, 1},
+		},
+		{
+			{0, 0, 0, 0},
+			{0, 4, 5, 0},
+			{0, 3, 1, 0},
+		},
+		{
+			{-1},
+			{2},
+			{3},
+		},
+	}
+
+	Convey("test setZeroes", t, func() {
+		for i, matrix := range cases {
+			setZeroes(matrix)
+			So(matrix, func(actual interface{}, expected ...interface{}) string {
+				if tools.EqualDoubleSlice(matrix, except[i], false) {
+					return ""
+				}
+				return fmt.Sprintf("want:   %+v\nactual: %+v", except[i], matrix)
+			}, "")
+		}
+	})
+
+}
