@@ -879,5 +879,54 @@ func TestSetZeroes(t *testing.T) {
 			}, "")
 		}
 	})
+}
 
+func TestSearchMatrix(t *testing.T) {
+	cases := [][][]int{
+		{
+			{3},
+			{1, 3, 5, 7},
+			{10, 11, 16, 20},
+			{23, 30, 34, 50},
+		},
+		{
+			{13},
+			{1, 3, 5, 7},
+			{10, 11, 16, 20},
+			{23, 30, 34, 50},
+		},
+		{
+			{17},
+			{1, 3, 5, 7},
+			{10, 11, 16, 20},
+			{23, 30, 34, 50},
+		},
+		{
+			{34},
+			{1, 3, 5, 7},
+			{10, 11, 16, 20},
+			{23, 30, 34, 50},
+		},
+		{
+			{2},
+			{1},
+		},
+		{
+			{1},
+			{1},
+		},
+	}
+
+	except := []bool{
+		true, false, false, true, false, true,
+	}
+
+	//fmt.Println(binarySearch([]int{1, 7, 17, 21, 27, 34}, -5, 0, 5, true))
+
+	Convey("test searchMatrix", t, func() {
+		for i, matrix := range cases {
+			target := matrix[0][0]
+			So(searchMatrix2(matrix[1:], target), ShouldEqual, except[i])
+		}
+	})
 }
