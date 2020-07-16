@@ -930,3 +930,18 @@ func TestSearchMatrix(t *testing.T) {
 		}
 	})
 }
+
+func TestCombine(t *testing.T) {
+	cases := [][]int{
+		{4, 2},
+		{1, 1},
+	}
+
+	Convey("test combine", t, func() {
+		for _, d := range cases {
+			ret := combine(d[0], d[1])
+			So(len(ret), ShouldNotBeNil)
+			t.Logf("%+v", ret)
+		}
+	})
+}
