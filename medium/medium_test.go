@@ -945,3 +945,16 @@ func TestCombine(t *testing.T) {
 		}
 	})
 }
+
+func TestSubsets(t *testing.T) {
+	cases := [][]int{
+		{1, 2, 3},
+	}
+	Convey("test subsets", t, func() {
+		for _, nums := range cases {
+			ret := subsets(nums)
+			So(len(ret), ShouldNotBeNil)
+			t.Logf("%+v", ret)
+		}
+	})
+}
