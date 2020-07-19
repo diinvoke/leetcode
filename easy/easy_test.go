@@ -497,3 +497,9 @@ func TestClimbStairs(t *testing.T) {
 		}
 	})
 }
+
+func TestDeleteDuplicates(t *testing.T) {
+	list := genListNode([]int{1, 1, 2, 2, 3})
+	res := deleteDuplicates(list)
+	t.Logf("%s", stringListNode(res))
+}
