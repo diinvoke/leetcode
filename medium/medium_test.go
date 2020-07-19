@@ -958,3 +958,22 @@ func TestSubsets(t *testing.T) {
 		}
 	})
 }
+
+func TestExist(t *testing.T) {
+	board := [][]byte{
+		{'A', 'B', 'C', 'E'},
+		{'S', 'F', 'C', 'S'},
+		{'A', 'D', 'E', 'E'},
+	}
+	words := []string{
+		"ABCCED", "SEE", "ABCB",
+	}
+	except := []bool{
+		true, true, false,
+	}
+	Convey("test exists", t, func() {
+		for i, w := range words {
+			So(exist(board, w), ShouldEqual, except[i])
+		}
+	})
+}
