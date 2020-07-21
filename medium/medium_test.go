@@ -977,3 +977,19 @@ func TestExist(t *testing.T) {
 		}
 	})
 }
+
+func TestSearchII(t *testing.T) {
+	cases := [][]int{
+		{0, 2, 5, 6, 0, 0, 1, 2},
+		{3, 2, 5, 6, 0, 0, 1, 2},
+		{1, 1},
+	}
+	except := []bool{
+		true, false, true,
+	}
+	Convey("test searchII", t, func() {
+		for i, nums := range cases {
+			So(searchII(nums[1:], nums[0]), ShouldEqual, except[i])
+		}
+	})
+}
