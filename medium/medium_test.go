@@ -993,3 +993,23 @@ func TestSearchII(t *testing.T) {
 		}
 	})
 }
+
+func TestDeleteDuplicates(t *testing.T) {
+	cases := [][]int{
+		{1, 1},
+		{1, 2, 2},
+		{1, 2, 3, 3, 4, 4, 5},
+		{1, 1, 1, 2, 3},
+	}
+	except := [][]int{
+		{},
+		{1},
+		{1, 2, 5},
+		{2, 3},
+	}
+	Convey("test deleteDuplicates", t, func() {
+		for i, nums := range cases {
+			So(stringListNode(deleteDuplicates(genListNode(nums))), ShouldEqual, stringListNode(genListNode(except[i])))
+		}
+	})
+}
