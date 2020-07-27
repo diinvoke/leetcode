@@ -1013,3 +1013,16 @@ func TestDeleteDuplicates(t *testing.T) {
 		}
 	})
 }
+
+func TestNumDecodings(t *testing.T) {
+	cases := []string{
+		"12", "226",
+	}
+	except := []int{2, 3}
+
+	Convey("test numDecodings", t, func() {
+		for i, s := range cases {
+			So(numDecodings(s), ShouldEqual, except[i])
+		}
+	})
+}
