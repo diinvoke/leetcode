@@ -1026,3 +1026,20 @@ func TestNumDecodings(t *testing.T) {
 		}
 	})
 }
+
+func TestReverseBetween(t *testing.T) {
+	cases := [][]int{
+		{2, 4, 1, 2, 3, 4, 5},
+		{1, 2, 3, 5},
+	}
+	except := [][]int{
+		{1, 4, 3, 2, 5},
+		{5, 3},
+	}
+
+	Convey("test reverseBetween", t, func() {
+		for i, nums := range cases {
+			So(stringListNode(reverseBetween(genListNode(nums[2:]), nums[0], nums[1])), ShouldEqual, stringListNode(genListNode(except[i])))
+		}
+	})
+}
