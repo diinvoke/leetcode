@@ -1043,3 +1043,33 @@ func TestReverseBetween(t *testing.T) {
 		}
 	})
 }
+
+func TestRestoreIpAddresses(t *testing.T) {
+	cases := []string{
+		"25525511135",
+		"0000",
+	}
+	except := [][]string{
+		{"255.255.11.135", "255.255.111.35"},
+		{"0.0.0.0"},
+	}
+
+	Convey("test restoreIpAddresses", t, func() {
+		for i, s := range cases {
+			So(nil, func(actual interface{}, expected ...interface{}) string {
+				res := restoreIpAddresses(s)
+				resDict := make(map[string]struct{}, len(res))
+				for _, r := range res {
+					resDict[r] = struct{}{}
+				}
+
+				for _, e := range except[i] {
+					if _, ok := resDict[e]; !ok {
+						return fmt.Sprintf("Expected: '%v'\nActual:   '%v'\n(Should be equal)", except[i], res)
+					}
+				}
+				return ""
+			})
+		}
+	})
+}
